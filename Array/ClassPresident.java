@@ -6,19 +6,33 @@ public class ClassPresident {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[][] arr = new int[n+2][n+2];
-        for(int i = 1 ; i < n+1 ; i++) {
-            for(int j = 1 ; j < n+1 ; j++) {
+        int grade = 5;
+        int[][] arr = new int[n][grade];
+        for(int i = 0 ; i < n ; i++) {
+            for(int j = 0 ; j < grade ; j++) {
                 arr[i][j] = sc.nextInt();
             }
         }
-        int count = 0;
-        for(int i = 1 ; i < n+1 ; i++) {
-            for(int j = 1; j < n+1 ; j++) {
-                if(arr[i][j] > arr[i-1][j] && arr[i][j] > arr[i][j-1] && arr[i][j] > arr[i+1][j] && arr[i][j] > arr[i][j+1]) count++;
+
+        int answer = 0;
+        int max = Integer.MIN_VALUE;
+        for(int i = 0 ; i < n ; i++) { //i번 학생이
+            int cnt = 0;
+            for(int j = 0 ; j < n ; j++) { //j 학년일때
+                for(int k = 0; k < grade ; k++) {
+                    if(arr[i][k] == arr[j][k]){ //j번 학생 k 학
+                        cnt++;
+                        System.out.println("i : "+ i +" /k : "+ k +" /j : "+ j +" /k : "+ k);
+                        break;
+                    }
+                }
+            }
+            if(cnt > max) {
+                max = cnt;
+                answer = i + 1;
             }
         }
-        System.out.println(count);
+        System.out.println(answer);
 
 
         sc.close();
