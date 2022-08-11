@@ -5,27 +5,28 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
-public class ClassPresident2 {
+public class Anagram {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        String str = br.readLine();
 
-        HashMap<Character, Integer> vote = new HashMap<>();
-
-        for(char x : str.toCharArray()) {
-            vote.put(x, vote.getOrDefault(x, 0)+1);
+        String str1 = br.readLine();
+        HashMap<Character, Integer> arr1 = new HashMap<>();
+        for(char x : str1. toCharArray()) {
+            arr1.put(x, arr1.getOrDefault(x,0) + 1);
         }
 
-        char answer = ' ';
-        int max = Integer.MIN_VALUE;
-        for(char x : vote.keySet()) {
-            if(vote.get(x) > max) {
-                max = vote.get(x);
-                answer = x;
+        String str2 = br.readLine();
+        for(char x : str2. toCharArray()) {
+            arr1.put(x, arr1.getOrDefault(x,0) - 1);
+        }
+
+        String answer = "YES";
+        for(char x : arr1.keySet()) {
+            if(arr1.get(x) != 0) {
+                answer = "NO";
+                break;
             }
         }
         System.out.println(answer);
-
     }
 }
