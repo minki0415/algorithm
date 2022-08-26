@@ -23,7 +23,6 @@ public class MusicVideo {
         int lt = Arrays.stream(arr).max().getAsInt();
         int rt = Arrays.stream(arr).sum();
         while(lt <= rt) {
-            System.out.println(lt + " " + rt);
             int mid = (lt+rt)/2;
             if(count(arr, mid) <= m){
                 answer = mid;
